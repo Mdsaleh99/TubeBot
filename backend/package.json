@@ -16,6 +16,7 @@
     "@langchain/google-genai": "^0.2.14",
     "@langchain/langgraph": "^0.3.6",
     "@langchain/openai": "^0.5.16",
+    "@langchain/qdrant": "^0.1.2",
     "dotenv": "^16.4.5",
     "langchain": "^0.3.29",
     "youtubei.js": "^14.0.0",
