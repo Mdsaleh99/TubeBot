@@ -13,7 +13,7 @@ app.use(express.json()); // Parse JSON bodies of incoming requests
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: "*", // Allow all origins for development; adjust as needed for production
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
