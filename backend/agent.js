@@ -11,7 +11,7 @@ dotenv.config()
 // createReactAgent => Creates a StateGraph agent that relies on a chat model utilizing tool calling.
 
 const video1 = data[1]
-await addYTVideoToVectorStore(video1)
+// await addYTVideoToVectorStore(video1)
 
 // Retreval tool
 const retrievalTool = tool(async ({query}, {configurable: {video_id}}) => {
@@ -34,12 +34,7 @@ const llm = new ChatGoogleGenerativeAI({
 });
 
 const memorySaver = new MemorySaver();
-const video_id = "JTmgi0vO5Ug";
-const agent = createReactAgent({ llm, tools: [retrievalTool], checkpointer: memorySaver });
+// MemorySaver is used to save the state of the agent between invocations, allowing it to remember past interactions.
+export const agent = createReactAgent({ llm, tools: [retrievalTool], checkpointer: memorySaver });
 
 
-const result = await agent.invoke({
-    messages: [{role: "user", content: "what is event sourcing?"}]
-}, { configurable: { thread_id: 1, video_id } }) // defined configure because we using checkpointer
-
-console.log(result.messages.at(-1).content);

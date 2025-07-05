@@ -13,7 +13,7 @@ const embeddings = new OpenAIEmbeddings({
 })
 
 // export const vectorStore = new MemoryVectorStore(embeddings)
-export const vectorStore = await new QdrantVectorStore(embeddings, {
+export const vectorStore = new QdrantVectorStore(embeddings, {
     url: process.env.QDRANT_URL,
     collectionName: "youtube_video_rag"
 });
