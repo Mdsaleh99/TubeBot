@@ -89,29 +89,32 @@ function App() {
   };
 
   return (
-    <div className='chat-container'>
-      <header className='chat-header'>
-        <h1>AI Chat</h1>
-        <button className='reset-button' onClick={resetChat}>
+    <div className="chat-container">
+      <header className="chat-header">
+        <h1>TubeBot</h1>
+        <button
+          className="reset-button"
+          onClick={resetChat}
+        >
           <svg
-            width='16'
-            height='16'
-            viewBox='0 0 16 16'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d='M8 3V1L4 5L8 9V7C10.21 7 12 8.79 12 11C12 13.21 10.21 15 8 15C5.79 15 4 13.21 4 11H2C2 14.31 4.69 17 8 17C11.31 17 14 14.31 14 11C14 7.69 11.31 5 8 5V3Z'
-              fill='currentColor'
+              d="M8 3V1L4 5L8 9V7C10.21 7 12 8.79 12 11C12 13.21 10.21 15 8 15C5.79 15 4 13.21 4 11H2C2 14.31 4.69 17 8 17C11.31 17 14 14.31 14 11C14 7.69 11.31 5 8 5V3Z"
+              fill="currentColor"
             />
           </svg>
           New Chat
         </button>
       </header>
 
-      <div className='messages-container'>
+      <div className="messages-container">
         {messages.length === 0 ? (
-          <div className='empty-state'>
+          <div className="empty-state">
             <p>Start your conversation with the AI</p>
           </div>
         ) : (
@@ -119,53 +122,53 @@ function App() {
             <div
               key={message.id}
               className={`message ${
-                message.isUser ? 'user-message' : 'ai-message'
+                message.isUser ? "user-message" : "ai-message"
               }`}
             >
-              <div className='message-avatar'>
-                {message.isUser ? 'You' : 'AI'}
+              <div className="message-avatar">
+                {message.isUser ? "You" : "AI"}
               </div>
-              <div className='message-content'>{message.text}</div>
+              <div className="message-content">{message.text}</div>
             </div>
           ))
         )}
         {isLoading && (
-          <div className='message ai-message'>
-            <div className='message-avatar'>AI</div>
-            <div className='message-content loading'>
-              <span className='dot'></span>
-              <span className='dot'></span>
-              <span className='dot'></span>
+          <div className="message ai-message">
+            <div className="message-avatar">AI</div>
+            <div className="message-content loading">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
             </div>
           </div>
         )}
         <div ref={messagesEndRef} />
       </div>
 
-      <div className='input-container'>
+      <div className="input-container">
         <textarea
           value={inputText}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder='Type your message...'
+          placeholder="Type your message..."
           disabled={isLoading}
           rows={1}
         />
         <button
-          className='send-button'
+          className="send-button"
           onClick={sendMessage}
-          disabled={inputText.trim() === '' || isLoading}
+          disabled={inputText.trim() === "" || isLoading}
         >
           <svg
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d='M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z'
-              fill='currentColor'
+              d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z"
+              fill="currentColor"
             />
           </svg>
         </button>

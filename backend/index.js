@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
     res.send("Hello, World!");
 });
 
-app.post("/generate", async (req, res) => {
+app.post("/api/v1/generate", async (req, res) => {
     try {
         const { query, video_id, thread_id } = req.body;
         console.log("Received query:", query);
