@@ -28,19 +28,28 @@ const triggerYoutubeVideoScrapeTool = tool(async ({ url }) => {
 });
 
 // Retreval tool
-const retrievalTool = tool(async ({query}, {configurable: {video_id}}) => {
-    const retrievedDocs = await vectorStore.similaritySearch(query, 3, {video_id});
-    const serializedDocs = retrievedDocs.map((doc) => doc.pageContent).join("\n ")
-    console.log(serializedDocs);
-    
-    return serializedDocs
-}, {
-    name: 'retrieve',
-    description: 'Retrieve the most relevant chunks of text from the transcript of a youtube video',
-    schema: z.object({
-        query: z.string()
-    })
-}) 
+const retrievalTool = tool(
+    async ({ query, video_id }) => {
+        const retrievedDocs = await vectorStore.similaritySearch(query, 3, {
+            video_id,
+        });
+        const serializedDocs = retrievedDocs
+            .map((doc) => doc.pageContent)
+            .join("\n ");
+        console.log(serializedDocs);
+
+        return serializedDocs;
+    },
+    {
+        name: "retrieve",
+        description:
+            "Retrieve the most relevant chunks of text from the transcript for a specific youtube video",
+        schema: z.object({
+            query: z.string(),
+            video_id: z.string().describe("The ID of the YouTube video to retrieve data from"),
+        }),
+    }
+); 
 
 const llm = new ChatGoogleGenerativeAI({
     model: "gemini-2.5-flash",  // 10 RPM and 500 req/day

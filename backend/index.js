@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import {agent} from "./agent.js";
+import { addYTVideoToVectorStore } from "./embeddings.js";
 
 dotenv.config();
 
@@ -9,7 +10,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json()); // Parse JSON bodies of incoming requests
+app.use(express.json({limit: "300mb"})); // Parse JSON bodies of incoming requests
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
@@ -45,9 +46,10 @@ app.post("/api/v1/generate", async (req, res) => {
     }
 });
 
-app.post("/api/v1/webhook", (req, res) => { 
-    console.log(req.body);
-    res.send("OK")
+app.post("/api/v1/webhook", async(req, res) => { 
+    await Promise.all(
+        req.body.map(async (video) => addYTVideoToVectorStore(video))
+    );
 })
 
 app.listen(PORT, () => {
