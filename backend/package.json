@@ -11,9 +11,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@langchain/community": "^0.3.47",
     "@langchain/core": "^0.3.61",
     "@langchain/google-genai": "^0.2.14",
+    "@langchain/groq": "^0.2.3",
     "@langchain/langgraph": "^0.3.6",
     "@langchain/openai": "^0.5.16",
     "@langchain/qdrant": "^0.1.2",

@@ -4,13 +4,19 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
 import { MemoryVectorStore } from "langchain/vectorstores/memory"
 import { QdrantVectorStore } from "@langchain/qdrant";
 import dotenv from "dotenv"
+import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 
 dotenv.config()
 
-const embeddings = new OpenAIEmbeddings({
-    model: "text-embedding-3-small",
-    apiKey: process.env.OPENAI_API_KEY
-})
+// const embeddings = new OpenAIEmbeddings({
+//     model: "text-embedding-3-small",
+//     apiKey: process.env.OPENAI_API_KEY
+// })
+
+const embeddings = new GoogleGenerativeAIEmbeddings({
+    model: "embedding-001",
+    apiKey: process.env.GEMINI_API_KEY,
+});
 
 // export const vectorStore = new MemoryVectorStore(embeddings)
 export const vectorStore = new QdrantVectorStore(embeddings, {

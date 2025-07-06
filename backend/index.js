@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 
 app.post("/api/v1/generate", async (req, res) => {
     try {
-        const { query, video_id, thread_id } = req.body;
+        const { query, thread_id } = req.body;
         console.log("Received query:", query);
 
         const result = await agent.invoke(
@@ -34,7 +34,7 @@ app.post("/api/v1/generate", async (req, res) => {
                     { role: "user", content: query },
                 ],
             },
-            { configurable: { thread_id, video_id } }
+            { configurable: { thread_id } }
         ); // defined configure because we using checkpointer
 
         console.log(result.messages.at(-1).content);
