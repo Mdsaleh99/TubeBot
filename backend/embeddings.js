@@ -14,7 +14,7 @@ dotenv.config()
 // })
 
 const embeddings = new GoogleGenerativeAIEmbeddings({
-    model: "embedding-001",
+    modelName: "embedding-001",
     apiKey: process.env.GEMINI_API_KEY,
 });
 

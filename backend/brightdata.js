@@ -30,5 +30,3 @@ export const triggerYoutubeVideoScrape = async (url) => {
 
     return result.snapshot_id;
 }
-
-triggerYoutubeVideoScrape("https://www.youtube.com/watch?v=fuhE6PYnRMc");
