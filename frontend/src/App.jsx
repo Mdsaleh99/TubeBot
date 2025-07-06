@@ -114,7 +114,7 @@ function App() {
       <div className="messages-container">
         {messages.length === 0 ? (
           <div className="empty-state">
-            <p>Start your conversation with the AI</p>
+            <h4>Fixing some issues, May not be work as expected</h4>
           </div>
         ) : (
           messages.map((message) => (
