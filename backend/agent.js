@@ -108,7 +108,7 @@ const memorySaver = new MemorySaver();
 // MemorySaver is used to save the state of the agent between invocations, allowing it to remember past interactions.
 export const agent = createReactAgent({
     llm,
-    systemMessage: SYSTEM_PROMPT,
+    // systemMessage: SYSTEM_PROMPT,
     tools: [
         retrievalTool,
         triggerYoutubeVideoScrapeTool,
