@@ -46,7 +46,8 @@ app.post("/api/v1/generate", async (req, res) => {
 });
 
 app.post("/api/v1/webhook", (req, res) => { 
-    
+    console.log(req.body);
+    res.send("OK")
 })
 
 app.listen(PORT, () => {
