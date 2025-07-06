@@ -23,11 +23,12 @@ export const triggerYoutubeVideoScrape = async (url) => {
     )
         
     const result = await response.json();
-    if (!response.ok) {
-        throw new Error(`Error: ${result.error || "Failed to trigger scrape"}`);
-    }
+    // if (!response.ok) {
+    //     throw new Error(`Error: ${result.error || "Failed to trigger scrape"}`);
+    // }
     console.log("Scrape triggered successfully:", result);
 
+    return result.snapshot_id;
 }
 
 triggerYoutubeVideoScrape("https://www.youtube.com/watch?v=fuhE6PYnRMc");
