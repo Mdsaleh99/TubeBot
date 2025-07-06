@@ -81,7 +81,7 @@ const retrieveSimilarVideosTool = tool(
 );
 
 const llm = new ChatGroq({
-    model: "llama-3.3-70b-versatile", 
+    model: "mistral-saba-24b",
     apiKey: process.env.GROQ_API_KEY,
 });
 
