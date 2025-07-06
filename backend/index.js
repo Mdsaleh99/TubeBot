@@ -45,6 +45,10 @@ app.post("/api/v1/generate", async (req, res) => {
     }
 });
 
+app.post("/api/v1/webhook", (req, res) => { 
+    
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
