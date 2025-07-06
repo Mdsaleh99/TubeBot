@@ -80,9 +80,9 @@ const retrieveSimilarVideosTool = tool(
     }
 );
 
-const llm = new ChatGroq({
-    model: "mistral-saba-24b",
-    apiKey: process.env.GROQ_API_KEY,
+const llm = new ChatGoogleGenerativeAI({
+    model: "gemini-2.5-flash",
+    apiKey: process.env.GEMINI_API_KEY,
 });
 
 const memorySaver = new MemorySaver();
